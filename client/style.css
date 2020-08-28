@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    border:2px solid #a3a3a3;
+     background-color: #b4a6a6; 
+    /* background-color: #ddd; */
+    width: 99.8%;
+    color: white;
+}
+
+.inputDiv {
+    text-align: center;
+    padding: 5px;
+    width: 99.8%;
+}
+
+#inputTask {
+    border-radius: 5px;
+    width: 40%;
+    height: 40px;
+    font-size: large;
+    padding: 5px;
+    margin: 10px;
+}
+
+.topBtn {
+    background-color: #d6c8c8;
+    border-radius: 5px;
+    border: 1px solid #a3a3a3;
+    width: 10%;
+    height: 40px;
+    font-size: large;  
+    color: white;
+}
+
+.tab {
+    width: 99.8%;
+    overflow: hidden;
+     background-color: #e6dfdf; 
+    /* border: 1px solid #ccc;*/
+    /* background-color: #f1f1f1;   */
+    border:2px solid #a3a3a3;
+  }
+  
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  .tab button:hover {
+    /* background-color: #ddd; */
+    background-color: #d6c8c8;
+  }
+  
+  .tab button.active {
+    /* background-color: #ccc; */
+    background-color: #b4a6a6;
+  }
+
+#inputTask:hover {
+    border: 2px solid  rgb(129, 127, 127);
+}
+
+.topBtn:hover {
+    background-color: #b4a6a6;
+    cursor: pointer;
+    color: black;
+    border: 2px solid  rgb(119, 117, 117); 
+}
+
+table {
+    width: 99.85%;
+    /* margin: 2px; */
+    padding: 20px;
+    border:2px solid #a3a3a3;
+}
+
+tr {
+    border-bottom: 4px solid #aaa;
+    box-shadow: 0 0 4px 0px #b4a6a6;
+    display: table-row;
+}
+
+tr:hover {
+    box-shadow: 0 0 4px 0px rgb(119, 117, 117);
+    background-color: #e6dfdf54; 
+}
+
+.rightTd {
+    float: right;
+    margin: 5px;
+}
+
+.leftTd {
+    float: left;
+    margin: 5px;
+}
+
+.editBtn {
+    background-color: rgb(48, 118, 186);
+    border-radius: 5px;
+    height: 30px;
+    color: white;
+}
+
+.completeBtn {
+    background-color: rgb(236, 174, 78);
+    border-radius: 5px;
+    height: 30px;
+    color: white;
+}
+
+/* .completeBtn2 {
+    background-color: rgb(107, 148, 94);
+  } */
+
+.complete {
+    text-decoration: line-through;
+}
+
+.deleteBtn {
+    background-color: rgb(227, 77, 82);
+    border-radius: 5px;
+    height: 30px;
+    color: white;
+}
+
+.completeBtn:hover {
+    background-color: gray;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+.deleteBtn:hover {
+    background-color: gray;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+.editBtn:hover {
+    background-color: gray;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+#signOutBtn {
+    background-color: #a59797;
+    
+}
+
+@media screen and (max-width: 438px) {
+
+    .topBtn {
+        height: 40px;
+        display: table;
+        margin: 0 auto;
+        margin-top: 5px;
+        width: 50%;
+        background-color: #cabdbd; 
+    }
+
+    #inputTask {
+        display: table;
+        margin: 0 auto;
+        width: 80%;
+    }
+} 
