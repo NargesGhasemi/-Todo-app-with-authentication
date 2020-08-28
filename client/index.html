@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>To DO App</title>
+    <meta name="viewport" content="width = device-width, initial-Scale = 1.0" />
+    <meta charset="UTF-8" />
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <h1>To-Do List</h1>
+        <label id ="user"></label>
+    </header>
+
+    <div class="inputDiv">
+        <input type="text" id="inputTask" placeholder="Enter new task here...">
+        <button class="topBtn" id="addBtn">Add</button>
+        <button class="topBtn" id="uploadBtn" >Upload</button>
+        <button class="topBtn" id="downloadBtn">Download</button>
+        <button class="topBtn" id="signOutBtn">sign out</button>
+    </div>
+    <div class="tab">
+        <button class="tabLink" id="allBtn">All</button>
+        <button class="tabLink" id="activeBtn">Active</button>
+        <button class="tabLink" id="completeBtn">Completed</button>
+    </div>
+    <table id="todoListTable">
+    </table>
+    <script src="index.js"></script>
+    <script src="model.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
+</body>
+
+</html>
