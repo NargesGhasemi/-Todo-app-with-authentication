@@ -8,7 +8,7 @@ var encoder = require('./encoder').encodeUser;
 exports.signInHandler = function (req, res) {
 
     req.on("data", function (data) {
-        newData += data.toString('utf-8');
+        newData = data.toString('utf-8');
     });
 
     req.on("end", function () {
@@ -19,7 +19,7 @@ exports.signInHandler = function (req, res) {
                 res.end();
                 return;
             }
-            savedData += data.toString('utf-8');
+            savedData = data.toString('utf-8');
             console.log('savedData: ', savedData);
             if (savedData == "") {
                 res.writeHead(500);
