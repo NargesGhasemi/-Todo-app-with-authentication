@@ -1,7 +1,11 @@
 class view {
   constructor() {
     this.myTable = this.findElementbyId('todoListTable');
-    this.userName = this.findElementbyId('user');
+    this.signInBtn = this.findElementbyId('signInBtn');
+    this.signUpBtn = this.findElementbyId('signUpBtn');
+    this.signOutBtn = this.findElementbyId('signOutBtn');
+    this.uploadBtn = this.findElementbyId('uploadBtn');
+    this.downloadBtn = this.findElementbyId('downloadBtn');
   }
 
   get _todoText() {
@@ -167,4 +171,37 @@ class view {
       handler();
     })
   }
+
+  bindUsername(handler) {
+    var user = this.findElementbyId("username");
+    user.innerText = handler();
+    if (handler() == "") {
+      this.uploadBtn.style.display = "none";
+      this.downloadBtn.style.display = "none";
+      this.signOutBtn.style.display = "none";
+    }
+    else{
+      this.signInBtn.style.display = "none";
+      this.signUpBtn.style.display = "none";
+    }
+  }
+
+  bindSignOut(handler) {
+    this.signOutBtn.addEventListener('click', event => {
+      handler();
+    })
+  }
+
+  bindSignIn(handler) {
+    this.signInBtn.addEventListener('click', event => {
+      handler();
+    })
+  }
+
+  bindSignUp(handler) {
+    this.signUpBtn.addEventListener('click', event => {
+      handler();
+    })
+  }
+
 }
