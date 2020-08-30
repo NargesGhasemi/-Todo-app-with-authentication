@@ -8,7 +8,7 @@ var encodeUser = require('./encoder').encodeUser;
 exports.signUpHandler = function (req, res) {
 
     req.on("data", function (data) {
-        newData += data.toString('utf-8');
+        newData = data.toString('utf-8');
     });
 
     req.on("end", function () {
@@ -20,7 +20,7 @@ exports.signUpHandler = function (req, res) {
                 return;
             }
 
-            savedData += data.toString('utf-8');
+            savedData = data.toString('utf-8');
             console.log('saved data: ', savedData);
 
             if (savedData !== "") {
@@ -50,9 +50,7 @@ exports.signUpHandler = function (req, res) {
                     res.end();
                     return;
                 }
-                res.writeHead(200, {
-                    'jwt': `${jwt}`
-                });
+                res.writeHead(200, { 'jwt': jwt });
                 res.write('successful');
                 res.end();
             });
