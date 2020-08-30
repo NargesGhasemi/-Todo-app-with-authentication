@@ -8,7 +8,7 @@ var encoder = require('./encoder').encodeUser;
 exports.signInHandler = function (req, res) {
 
     req.on("data", function (data) {
-        newData += data.toString('utf-8');
+        newData = data.toString('utf-8');
     });
 
     req.on("end", function () {
@@ -19,8 +19,7 @@ exports.signInHandler = function (req, res) {
                 res.end();
                 return;
             }
-            savedData += data.toString('utf-8');
-            console.log('savedData: ', savedData);
+            savedData = data.toString('utf-8');
             if (savedData == "") {
                 res.writeHead(500);
                 res.write('You have not signed in yet.');
@@ -28,12 +27,17 @@ exports.signInHandler = function (req, res) {
                 return;
             }
             else {
-                if (savedData)
+                try {
+                    console.log('savedData: ', savedData);
                     savedUser = JSON.parse(savedData);
+                } catch (error) {
+                    console.log('error in parse :',error.message) ;
+                }
+
                 if (newData)
                     newData = JSON.parse(newData);
 
-                if (!(savedUser.some(item => item.username === newData.username ))) {
+                if (!(savedUser.some(item => item.username === newData.username))) {
                     res.writeHead(401);
                     res.write('You have not signed in yet.');
                     res.end();
@@ -47,12 +51,12 @@ exports.signInHandler = function (req, res) {
                 }
 
                 savedUser.forEach(item => {
-                    if (item.username === newData.username) {
+                    if (item.username === newData.username && item.password === newData.password) {
                         newData = {
                             username: item.username,
                             password: item.password,
                             fullname: item.fullname,
-                            todos: item.todos
+                            todos: item.todos,
                         }
                     }
 
@@ -69,7 +73,7 @@ exports.signInHandler = function (req, res) {
                     let jwt = encoder(newData.fullname, newData.username);
                     console.log('jwt ', jwt);
 
-                    let responseData = newData.todos;  
+                    let responseData = newData.todos;
 
                     res.writeHead(200, { 'jwt': jwt });
                     res.write(JSON.stringify(responseData));
