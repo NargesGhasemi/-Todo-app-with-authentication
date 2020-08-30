@@ -11,8 +11,10 @@ class controller {
     this.view.bindTabLink(this.handleTabLink);
     this.view.bindUploadTodo(this.handleUpload);
     this.view.bindDownloadTodo(this.handleDownload);
-    // this.view.bindSignIn(this.handleSignIn);
-    // this.view.bindSignUp(this.handleSignUp);
+    this.view.bindUsername(this.handleUsername);
+    this.view.bindSignOut(this.handleSignOut);
+    this.view.bindSignIn(this.handleSignIn);
+    this.view.bindSignUp(this.handleSignUp);
 
     // Display initial todos
     this.onTodoListChanged(this.model.todos);
@@ -81,6 +83,34 @@ class controller {
     xmlHttp.open('GET', 'read', true);
     xmlHttp.setRequestHeader('jwt', jwt);
     xmlHttp.send();
+  }
+
+  handleUsername() {
+    let jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      let token = atob(jwt);
+      let firstIndex = token.indexOf('=') + 1;
+      let lastIndex = token.lastIndexOf('&');
+      let name = token.substring(firstIndex, lastIndex);
+      let username = token.substring(lastIndex + 1, token.length);
+      let fullName = name + " " + username;
+      return "welcome " + fullName;
+    }
+    else
+      return "";
+  }
+
+  handleSignOut() {
+    localStorage.clear();
+    document.location.href = 'http://localhost:8081/signIn.html';
+  }
+
+  handleSignIn() {
+    document.location.href = 'http://localhost:8081/signIn.html';
+  }
+
+  handleSignUp() {
+    document.location.href = 'http://localhost:8081/signUp.html';
   }
 
 }
