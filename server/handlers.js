@@ -11,7 +11,7 @@ exports.routeHandlers = function (req, res) {
     console.log("req.method: ", req.method);
     var routes;
 
-    if (req.method === "GET" && !req.url.includes("."))
+    if (req.method === "GET" && !req.url.includes(".") && req.url !== "/read")
         req.url = req.url + ".html";
   
 
