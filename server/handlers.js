@@ -25,7 +25,7 @@ exports.routeHandlers = function (req, res) {
         routes = readFile;
     }
 
-    else if (req.method === "POST" && req.url === "/write") {
+    else if (req.method === "POST" && req.url === "/write" && req.url !== "/read") {
         var jwt = req.headers.jwt;
         if (!validateToken(jwt)) {
             res.writeHead(401);
