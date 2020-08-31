@@ -3,13 +3,17 @@ var writeFile = require("./writeFile").writeHandler,
     signUpFile = require("./signupFile").signUpHandler,
     signInFile = require("./signInFile").signInHandler,
     staticFilesHandler = require("./staticFilesHandler").staticFilesHandler,
-    decodeUser = require("./decoder").decodeUser,
+    urlProvider = require("./decoder").decodeUser,
     validateToken = require("./validToken").validateToken;
 
 exports.routeHandlers = function (req, res) {
     console.log("req.url: ", req.url);
     console.log("req.method: ", req.method);
     var routes;
+
+    if (req.method === "GET" && !req.url.includes("."))
+        req.url = req.url + ".html";
+  
 
     if (req.method === "GET" && req.url === "/read") {
         var jwt = req.headers.jwt;
@@ -21,6 +25,7 @@ exports.routeHandlers = function (req, res) {
         }
         routes = readFile;
     }
+
     else if (req.method === "POST" && req.url === "/write") {
         var jwt = req.headers.jwt;
         if (!validateToken(jwt)) {
@@ -31,12 +36,15 @@ exports.routeHandlers = function (req, res) {
         }
         routes = writeFile;
     }
+
     else if (req.method === "POST" && req.url === "/signUp") {
         routes = signUpFile;
     }
+
     else if (req.method === "POST" && req.url === "/signIn") {
         routes = signInFile;
     }
+    
     else {
         routes = staticFilesHandler;
     }
