@@ -24,7 +24,12 @@ exports.signUpHandler = function (req, res) {
             console.log('saved data: ', savedData);
 
             if (savedData !== "") {
-                savedUser = JSON.parse(savedData);
+                  try {
+                    console.log('savedData: ', savedData);
+                    savedUser = JSON.parse(savedData);
+                } catch (error) {
+                    console.log('error in parse :',error.message) ;
+                }
             }
 
             newData = JSON.parse(newData);
