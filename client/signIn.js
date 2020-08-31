@@ -20,9 +20,8 @@ function signIn() {
       localStorage.setItem('todos', request.responseText);
       localStorage.setItem('jwt', jwt);
       alert('Signed in successfully!');
-      // user.value = getUsername();
-      document.location.href = 'http://localhost:8081/index.html';
-      //document.location.href = `http://localhost:8081/user/` + atob(jwt);
+      document.location.href = 'http://localhost:8081/index';
+   
     }
     else if (request.readyState === 4 && (request.status === 401 || request.status === 500)) {
       alert(request.responseText);
@@ -32,13 +31,3 @@ function signIn() {
   request.setRequestHeader('Content-Type', 'text/plain')
   request.send(data);
 }
-
-// function getUsername() {
-//   let token = atob(localStorage.getItem('jwt'));
-//   let firstIndex = token.indexOf('=') + 1;
-//   let lastIndex = token.lastIndexOf('&');
-//   let name = token.substring(firstIndex, lastIndex);
-//   let username = token.substring(lastIndex + 1, token.length);
-//   let fullName = name + " " + username;
-//   return fullName;
-// }
