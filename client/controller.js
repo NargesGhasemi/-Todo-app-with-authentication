@@ -94,7 +94,7 @@ class controller {
       let name = token.substring(firstIndex, lastIndex);
       let username = token.substring(lastIndex + 1, token.length);
       let fullName = name + " " + username;
-      return "welcome " + fullName;
+      return "welcome " + name;
     }
     else
       return "";
@@ -102,15 +102,15 @@ class controller {
 
   handleSignOut() {
     localStorage.clear();
-    document.location.href = 'http://localhost:8081/signIn.html';
+    document.location.href = 'http://localhost:8081/signIn';
   }
 
   handleSignIn() {
-    document.location.href = 'http://localhost:8081/signIn.html';
+    document.location.href = 'http://localhost:8081/signIn';
   }
 
   handleSignUp() {
-    document.location.href = 'http://localhost:8081/signUp.html';
+    document.location.href = 'http://localhost:8081/signUp';
   }
 
 }
