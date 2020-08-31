@@ -18,7 +18,7 @@ function signIn() {
       localStorage.setItem('todos', request.responseText);
       localStorage.setItem('jwt', jwt);
       alert('Signed in successfully!');
-      document.location.href = 'http://localhost:8081/index.html';
+      document.location.href = 'http://localhost:8081/index';
     }
     else if (request.readyState === 4 && (request.status === 401 || request.status === 500)) {
       alert(request.responseText);
