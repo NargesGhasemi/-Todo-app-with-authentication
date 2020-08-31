@@ -37,8 +37,7 @@ function signUp() {
       let jwt = atob(request.getResponseHeader('jwt'));
       localStorage.setItem('todos', '[]');
       localStorage.setItem('jwt', request.getResponseHeader('jwt'));
-      document.location.href = 'http://localhost:8081/index.html';
-      // document.location.href = `http://localhost:8081/user/${jwt}`;
+      document.location.href = 'http://localhost:8081/index';
 
     }
     else if (request.readyState === 4 && request.status === 401) {
